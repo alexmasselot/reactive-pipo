@@ -5,10 +5,9 @@ import scala.util.{Try, Failure, Success, Random}
 
 
 /**
- * slice source array in nSlice elements (sliding) and find occurrences of of a given subset wih the soruce collection
- * only the set with a score >= minScore are kept
+ * The basic implementation of MatcherCommon, with no effort to handle failures
  *
- * Created by masseloa on 2/20/14.
+ * Created by Alexandre Masselot on 2/20/14.
 
  * @param targets the list of values that must be found
  * @param minScore the minimum score to keep it
@@ -31,8 +30,6 @@ class MatcherBasic(val targets: List[Int], val minScore: Double, val source: Dat
   /**
    * get the list of all the matches
    */
-  // v_try
-  // def findAll: Iterator[Match] = buildSlices.filter(isSliceMatching).map(buildMatchFromSlice)
   def findAll: List[Match] = buildSlices.filter(isSliceMatching).map(buildMatchFromSlice).toList
 
 

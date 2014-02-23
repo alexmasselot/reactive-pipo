@@ -6,6 +6,7 @@ import scala.util.Try
 /**
  * Created by Alexandre Masselot on 2/21/14.
  */
+
 object AppFuture extends CommonsApp {
   output(s"start ${this.getClass.getSimpleName}")
 
