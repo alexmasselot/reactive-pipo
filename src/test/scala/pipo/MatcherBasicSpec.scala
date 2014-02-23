@@ -4,10 +4,12 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
 
 /**
- * Created by masseloa on 2/20/14.
+ * Created by Alexandre Masselot on 2/20/14.
  */
 class MatcherBasicSpec extends FlatSpec {
-  val dd = new DataStatic("pipo", 100, List(10, 20, 30, 40, 50, 60, 70, 80, 90, 80, 70, 60))
+  Match.failureRate = 0
+
+  val dd = new DataContainer("pipo", 100, List(10, 20, 30, 40, 50, 60, 70, 80, 90, 80, 70, 60))
 
   "new MatcherBasic empty set" should "throw exception" in {
     an[InvalidMatcherException] should be thrownBy {
@@ -25,7 +27,7 @@ class MatcherBasicSpec extends FlatSpec {
   }
 
   "score" should "behave with pulling x within 5 when among a set of 10 values between [0:100[" in {
-    val data = DataStatic("10k", 10000, 20)
+    val data = DataContainer("10k", 10000, 20)
     val m = new MatcherBasic(List(1, 2, 3,4,5), 3, data, 7)
 
     m.score(List()) should be(0.0 +- 0.001)
@@ -75,7 +77,7 @@ class MatcherBasicSpec extends FlatSpec {
     val matcher = new MatcherBasic(List(20, 40), 3.0, dd, 3)
     val matches = matcher.findAll
 
-    matches.map(_.get.matchedValues).toList should equal(List(List(20,40)))
+    matches.map(_.matchedValues) should equal(List(List(20,40)))
   }
 
 
@@ -84,6 +86,6 @@ class MatcherBasicSpec extends FlatSpec {
     val matcher = new MatcherBasic(List(60, 70, 80), 4.0, dd, 3)
     val matches = matcher.findAll
 
-    matches.map(_.get.matchedValues).toList should equal(List(List(60, 70, 80),List(80, 70,60)))
+    matches.map(_.matchedValues) should equal(List(List(60, 70, 80),List(80, 70,60)))
   }
 }
