@@ -1,6 +1,6 @@
 package pipo.app
 
-import pipo.{MatcherWithTry, Match, DataContainer, MatcherBasic}
+import pipo._
 import scala.util.Try
 
 /**
