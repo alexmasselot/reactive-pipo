@@ -10,10 +10,10 @@ import scala.util.{Try, Failure, Success}
  * @param targets the list of values that must be found
  * @param minScore the minimum score to keep it
  * @param source  the container of targeted values
- * @param nSlice  the size of a slice
+ * @param sliceWidth  the size of a slice
  *
  */
-class MatcherWithTry(val targets: List[Int], val minScore: Double, val source: DataContainer, val nSlice: Int) extends MatcherCommon {
+class MatcherWithTry(val targets: List[Int], val minScore: Double, val source: DataContainer, val sliceWidth: Int) extends MatcherCommon {
   /**
    * find the first occurrence
    * @return an potential Match (failing Match are returned with a None)

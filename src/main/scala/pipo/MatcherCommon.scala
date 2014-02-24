@@ -19,7 +19,7 @@ trait MatcherCommon {
   //the container of targeted values
   val source: DataContainer
   //the size of a slice
-  val nSlice: Int
+  val sliceWidth: Int
 
   //just throw exception at instanciation if it makes no sense a match can ever be produced
   if (targets.size == 0) {
@@ -33,7 +33,7 @@ trait MatcherCommon {
    *
    * Yep, that's a crude estimation, but please have a look at the class and package names
     */
-  private val binomialDist = new BinomialDistribution(targets.size, 1 - Math.pow(1 - 1.0 / source.maxValue, nSlice))
+  private val binomialDist = new BinomialDistribution(targets.size, 1 - Math.pow(1 - 1.0 / source.maxValue, sliceWidth))
 
 
   /**
@@ -51,7 +51,7 @@ trait MatcherCommon {
    * get all the slice of size nSlice into the source numbers, with an incremental step of 1
    */
   protected def buildSlices: Iterator[List[Int]] = {
-    source.numbers.sliding(nSlice, 1)
+    source.numbers.sliding(sliceWidth, 1)
   }
 
   /**

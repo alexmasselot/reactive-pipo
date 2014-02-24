@@ -17,10 +17,10 @@ import rx.lang.scala._
  * @param targets the list of values that must be found
  * @param minScore the minimum score to keep it
  * @param source  the container of targeted values
- * @param nSlice  the size of a slice
+ * @param sliceWidth  the size of a slice
  *
  */
-class MatcherWithObservable(val targets: List[Int], val minScore: Double, val source: DataContainer, val nSlice: Int) extends MatcherCommon {
+class MatcherWithObservable(val targets: List[Int], val minScore: Double, val source: DataContainer, val sliceWidth: Int) extends MatcherCommon {
   /**
    * find the first occurrence and put into a future.
    * if nothing is found or an error os thrown, the exception will be captured by the Future failing state
