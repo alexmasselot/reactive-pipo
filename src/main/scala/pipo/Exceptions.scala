@@ -6,3 +6,5 @@ package pipo
 case class BadMatchException(msg:String) extends Exception
 
 case class InvalidMatcherException(msg:String) extends Exception
+
+case class MatchNotFoundException() extends Exception

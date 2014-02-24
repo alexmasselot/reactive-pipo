@@ -36,7 +36,6 @@ class MatcherWithTry(val targets: List[Int], val minScore: Double, val source: D
    */
   def findAll: List[Try[Match]] = buildSlices.filter(isSliceMatching).map(buildMatchFromSlice).toList
 
-
   /**
    * from a matching slice, build a Match object from the given slice
    * @param slice a slice of values from source

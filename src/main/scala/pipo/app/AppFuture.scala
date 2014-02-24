@@ -4,19 +4,22 @@ import scala.concurrent._
 import ExecutionContext.Implicits.global
 import pipo._
 import scala.async.Async._
-import scala.util.Success
-import scala.util.Failure
+import scala.util.{Try, Success, Failure}
 
 /**
- * Created by Alexandre Masselot on 2/21/14.
+ * Instead of blocking to wait for the Matcher, setup a Future[List[Try[Match]]], so computation can continue during computation
+ *
+ * Created by Alexandre Masselot on 2/23/14.
  */
 object AppFuture extends CommonsApp {
-  output(s"start ${this.getClass.getSimpleName}")
 
   val data = DataContainer("one shot", 100, 1000000)
+
+  go
+
   val matcher = new MatcherWithTry(List(10, 50, 99, 25, 2, 3, 4, 5, 7, 8, 9), 3.0, data, 30)
 
-  val futureMatched = async {
+  val futureMatched: Future[List[Try[Match]]] = async {
     matcher.findAll.toList
   }
   futureMatched onComplete {
