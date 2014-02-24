@@ -8,6 +8,7 @@ import scala.util.{Try, Success, Failure}
 import rx.lang.scala._
 import rx.lang.scala.schedulers._
 import Notification._
+import rx.lang.scala.subscriptions.CompositeSubscription
 
 
 /**
@@ -17,7 +18,7 @@ import Notification._
  */
 object AppObservable extends CommonsApp {
 
-  val data = DataContainer("one shot", 100, 1000000)
+  val data = DataContainer("AAA", 100, 1000000)
 
   go
 
@@ -27,13 +28,13 @@ object AppObservable extends CommonsApp {
   //but nothing would prevent the observable to have element matched added later
   // it will terminate at an onCompleted  or onError event.
   var obs: Observable[Try[Match]] = matcher.findAll
-
   obs.subscribe( v => output(s"${v.toString}"))
 
+
   //we can apply collection operators (map, flatmap, filter ...)
+  output("filter on failure")
   obs.filter(_.isFailure).subscribe( v => output(s"${v.toString}"))
 
   output("done")
 
-  Thread.sleep(10000)
 }
