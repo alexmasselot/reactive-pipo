@@ -7,7 +7,7 @@ import scala.util.Try
  * Created by Alexandre Masselot on 2/21/14.
  */
 object AppBasic extends CommonsApp {
-  Match.failureRate = 0
+  Match.failureRate = 0.3
 
   val data = DataContainer("one shot", 100, 1000000)
   go

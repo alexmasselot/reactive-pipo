@@ -13,7 +13,7 @@ case class IntMessage(v: Int)
 
 case class StringMessage(v: String)
 
-object AppActorDummy extends CommonsApp {
+object AppActorDummy extends App {
   val system = ActorSystem("System")
 
   val rootActor = system.actorOf(Props[OneActor], "seed")

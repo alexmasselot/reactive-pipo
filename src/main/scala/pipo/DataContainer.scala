@@ -10,7 +10,6 @@ import scala.util.Random
  * @param numbers just a list of Int
  */
 class DataContainer(val name: String, val maxValue: Int, val numbers: List[Int]){
-
   def size = numbers.size
 }
 

@@ -72,7 +72,6 @@ class ActorMaster extends Actor {
  */
 class ActorWorkerMatch(name: String, maxValue: Int, nbVal: Int) extends Actor {
   val data = DataContainer(name, maxValue, nbVal)
-  var iTerminated = 0
 
   def receive = {
     case FindAll(targets, minScore, sliceWidth) =>
